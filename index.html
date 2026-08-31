@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX CRICKET | Premium Equipment</title>
+    <style>
+        /* =========================================
+           GLOBAL & RESET STYLES
+        ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f8;
+            color: #148001;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        /* =========================================
+           HEADER & NAVIGATION
+        ========================================= */
+        #header {
+            background-color: #757f08;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(42, 150, 40, 0.1);
+        }
+
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        #logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #logo-icon {
+            background-color: #4a9859b8;
+            color: #fff;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 1.2rem;
+        }
+
+        #logo strong {
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+        }
+
+        #logo small {
+            display: block;
+            font-size: 0.7rem;
+            color: #04321c;
+            letter-spacing: 2px;
+        }
+
+        #nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        #nav-links a {
+            color: #f1faee;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        #nav-links a:hover,
+        #nav-links a.active {
+            background-color: #ecece4;
+            color: #022210;
+        }
+
+        #cart-link {
+            position: relative;
+        }
+
+        #cart-count {
+            background-color: #035d1f;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            margin-left: 4px;
+        }
+
+        #menu-btn {
+            display: none;
+            background: none;
+            color: #fff;
+            font-size: 1.8rem;
+        }
+
+        /* =========================================
+           HERO SECTION
+        ========================================= */
+        #home {
+            position: relative;
+            background-color: #79ac124e;
+            color: #fff;
+            padding: 6rem 2rem;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-banner-img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        #home h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        #home p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: #a8dadc;
+        }
+
+        .btn-primary {
+            background-color: #0a8252;
+            color: #fff;
+            padding: 12px 28px;
+            font-weight: bold;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: #197c1276;
+        }
+
+        /* =========================================
+           SECTIONS LAYOUT
+        ========================================= */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-heading h2 {
+            font-size: 2.2rem;
+            color: #05490dbb;
+        }
+
+        /* =========================================
+           PRODUCTS SECTION
+        ========================================= */
+        #product-controls {
+            display: flex;
+            gap: 15px;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        #search-input,
+        #category-filter {
+            padding: 10px 15px;
+            border: 1px solid #44a712ad;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        #search-input {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        #products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+        }
+#hero,
+#about,
+#intro {
+    background: #969f91;
+    color: #273a07;
+}
+        .product-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-image {
+            position: relative;
+            height: 220px;
+            background-color: #f8fbff;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-category {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 223, 86, 0.366);
+            color: #000000;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            border-radius: 3px;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .product-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            font-size: 0.9rem;
+            color: #047a14;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #0c7932;
+        }
+
+        .add-cart {
+            background-color: #08942f95;
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .add-cart:hover {
+            background-color: #68780e;
+        }
+
+        #no-products {
+            display: none;
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 3rem;
+            color: #39b504;
+        }
+
+        /* =========================================
+           CART SECTION
+        ========================================= */
+        #cart-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        #cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cart-item {
+            background: #fff;
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(4, 119, 4, 0.577);
+            gap: 15px;
+        }
+
+        .cart-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 6px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .cart-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-info {
+            flex: 1;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .quantity-controls button {
+            background: #eee;
+            width: 26px;
+            height: 26px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .cart-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+        .remove-btn {
+            background: none;
+            color: #0b573b;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        #empty-cart {
+            text-align: center;
+            background: #fff;
+            padding: 3rem;
+            border-radius: 8px;
+        }
+
+        #empty-cart-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        #cart-summary {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(31, 126, 3, 0.497);
+            height: fit-content;
+        }
+
+        .summary-row,
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .summary-total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        #checkout-btn,
+        #clear-cart-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        #checkout-btn {
+            background-color: #8a9d20;
+            color: #fff;
+        }
+
+        #clear-cart-btn {
+            background-color: transparent;
+            color: #067014;
+            border: 1px solid #335c25;
+        }
+
+        /* =========================================
+           ABOUT & CONTACT SECTIONS
+        ========================================= */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        #contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        #contact-form input,
+        #contact-form textarea {
+            padding: 12px;
+            border: 1px solid #04781b6a;
+            border-radius: 5px;
+        }
+
+        #form-message {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* =========================================
+           CTA SECTION
+        ========================================= */
+        #cta {
+            background-color: #93910da7;
+            color: #fff;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        #cta h2 {
+            font-size: 2rem;
+            margin: 10px 0;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+        #footer {
+            background-color: #8a8502;
+            color: #f3f9f9;
+            padding: 3rem 2rem 1rem;
+        }
+
+        #footer-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .footer-column a {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        #footer-bottom {
+            text-align: center;
+            border-top: 1px solid #738543;
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        /* =========================================
+           NOTIFICATION POPUP
+        ========================================= */
+        #notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1f6029;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(23, 102, 2, 0.689);
+            transition: opacity 0.5s ease;
+            z-index: 2000;
+        }
+
+        #notification.hide {
+            opacity: 0;
+        }
+
+        /* =========================================
+           MEDIA QUERIES
+        ========================================= */
+        @media (max-width: 768px) {
+            #menu-btn {
+                display: block;
+            }
+
+            #nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #00973a8d;
+                padding: 1rem;
+            }
+
+            #nav-links.show {
+                display: flex;
+            }
+
+            #cart-layout,
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <nav id="navbar">
+            <div id="logo">
+                <span id="logo-icon">AC</span>
+                <div>
+                    <strong>APEX</strong>
+                    <small>CRICKET</small>
+                </div>
+            </div>
+
+            <button id="menu-btn">☰</button>
+
+            <div id="nav-links">
+                <a href="#home" class="active">Home</a>
+                <a href="#products">Products</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="#cart" id="cart-link">
+                    Cart <span id="cart-count">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <img src="images/hero banner.png" alt="Apex Cricket Banner" class="hero-banner-img" onerror="this.style.display='none'">
+            
+            <h1>Gear Up For Victory</h1>
+            <a href="#products" class="btn-primary">SHOP EQUIPMENT →</a>
+        </section>
+
+        <section id="products" class="section">
+            <div class="section-heading">
+                <h2>Our Premium Equipment</h2>
+                <p>Designed for professional power, protection, and endurance.</p>
+            </div>
+
+            <div id="product-controls">
+                <input type="text" id="search-input" placeholder="Search products...">
+                <select id="category-filter">
+                    <option value="all">All Categories</option>
+                    <option value="c:\Users\3D\Pictures\hero banner.png">Bats</option>
+                    <option value="Gloves">Gloves</option>
+                    <option value="Pads">Pads</option>
+                    <option value="Helmet">Helmets</option>
+                    <option value="Shoes">Shoes</option>
+                    <option value="Kit Bag">Kit Bags</option>
+                    <option value="Protection">Protection</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Accessories">Accessories</option>
+                </select>
+            </div>
+
+            <div id="products-grid">
+                </div>
+
+            <div id="no-products">
+                <h3>No products found matching your search.</h3>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="section-heading">
+                <h2>About APEX Cricket</h2>
+            </div>
+            <div class="about-content">
+                <div>
+                    <h3>Crafting Excellence Since 2026</h3>
+                    <p>APEX Cricket is dedicated to providing professional players and enthusiast cricketers with grade-A gear. From hand-crafted English Willow bats to high-impact protective equipment, quality drives everything we do.</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/hero banner.png" alt="About Apex Cricket" onerror="this.src='https://via.placeholder.com/500x300?text=About+Apex+Cricket'">
+                </div>
+            </div>
+        </section>
+
+        <section id="cart" class="section">
+            <div class="section-heading">
+                <h2>My Cart</h2>
+                <p>Review and manage your selected cricket equipment.</p>
+            </div>
+
+            <div id="cart-layout">
+                <div>
+                    <div id="cart-items">
+                        </div>
+
+                    <div id="empty-cart">
+                        <div id="empty-cart-icon">🛒</div>
+                        <h3>Your Cart is Empty</h3>
+                        <p>You haven't added any equipment yet.</p>
+                        <br>
+                        <a href="#products" class="btn-primary">CONTINUE SHOPPING →</a>
+                    </div>
+                </div>
+
+                <aside id="cart-summary">
+                    <h2>Order Summary</h2>
+                    <br>
+                    <div class="summary-row">
+                        <span>Items</span>
+                        <strong id="summary-items">0</strong>
+                    </div>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <strong id="cart-subtotal">Rs. 0</strong>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery</span>
+                        <strong>FREE</strong>
+                    </div>
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <strong id="cart-total">Rs. 0</strong>
+                    </div>
+
+                    <button id="checkout-btn">CHECKOUT →</button>
+                    <button id="clear-cart-btn">🗑 CLEAR CART</button>
+                </aside>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="section-heading">
+                <h2>Contact Us</h2>
+                <p>Have questions about gear selection? Reach out to our team.</p>
+            </div>
+
+            <form id="contact-form">
+                <input type="text" id="name" placeholder="Your Name">
+                <input type="email" id="email" placeholder="Your Email">
+                <input type="text" id="subject" placeholder="Subject">
+                <textarea id="message" rows="5" placeholder="Your Message"></textarea>
+                <button type="submit" class="btn-primary">SEND MESSAGE</button>
+                <div id="form-message"></div>
+            </form>
+        </section>
+
+        <section id="cta">
+            <span>READY TO PLAY?</span>
+            <h2>Upgrade Your Cricket Gear</h2>
+            <p>Shop premium equipment and take your game to the next level.</p>
+            <br>
+            <a href="#products" class="btn-primary">EXPLORE PRODUCTS →</a>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div id="footer-main">
+            <div id="footer-brand">
+                <div id="footer-logo">
+                    <strong>APEX CRICKET</strong>
+                </div>
+                <p>Premium cricket equipment for players who are serious about their game.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="#cart">Cart</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Categories</h3>
+                <a href="#products">Cricket Bats</a>
+                <a href="#products">Gloves</a>
+                <a href="#products">Pads</a>
+                <a href="#products">Helmets</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p>📧 apexcricket@example.com</p>
+                <p>📞 +92 300 1234567</p>
+                <p>📍 Karachi, Pakistan</p>
+            </div>
+        </div>
+
+        <div id="footer-bottom">
+            © 2026 Apex Cricket. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        /* =========================================
+           PRODUCTS DATA (ADD YOUR IMAGE PATHS HERE)
+        ========================================= */
+        const products = [
+            {
+                id: 1,
+                name: "APEX Pro Cricket Bat",
+                category: "Bat",
+                price: 18500,
+                image: "images/bat pro.png", // Add image path here
+                description: "Premium balanced English Willow bat."
+            },
+            {
+                id: 2,
+                name: "APEX Power Cricket Bat",
+                category: "Bat",
+                price: 14500,
+                image: "images/bat.png", // Add image path here
+                description: "Powerful bat designed for attacking players."
+            },
+            {
+                id: 3,
+                name: "APEX Batting Gloves",
+                category: "Gloves",
+                price: 5500,
+                image: "images/pro gloves.png", // Add image path here
+                description: "Comfortable gloves with high protection."
+            },
+            {
+                id: 4,
+                name: "APEX Professional Gloves",
+                category: "Gloves",
+                price: 7200,
+                image: "images/Gloves.png", // Add image path here
+                description: "Premium leather gloves for competition."
+            },
+            {
+                id: 5,
+                name: "APEX Batting Pads",
+                category: "Pads",
+                price: 6800,
+                image: "images/pads.png", // Add image path here
+                description: "Lightweight and maximum protection pads."
+            },
+            {
+                id: 6,
+                name: "APEX Pro Helmet",
+                category: "Helmet",
+                price: 8500,
+                image: "images/helmet.png", // Add image path here
+                description: "Steel visor helmet with custom fitting."
+            },
+            {
+                id: 7,
+                name: "APEX Spike Shoes",
+                category: "Shoes",
+                price: 9500,
+                image: "images/cricketshoes.png", // Add image path here
+                description: "High-grip shoes for turf pitch movement."
+            },
+            {
+                id: 8,
+                name: "APEX Cricket Kit Bag",
+                category: "Kit Bag",
+                price: 7500,
+                image: "images/kitbag.png", // Add image path here
+                description: "Spacious duffle bag for complete gear."
+            },
+            {
+                id: 9,
+                name: "APEX Thigh Guard",
+                category: "Protection",
+                price: 4200,
+                image: "images/thigh guard.png", // Add image path here
+                description: "Dual-layer ergonomic body protection."
+            },
+            {
+                id: 10,
+                name: "APEX Match Shirt",
+                category: "Clothing",
+                price: 3500,
+                image: "images/apex shirt.png", // Add image path here
+                description: "Breathable polyester performance wear."
+            },
+            {
+                id: 11,
+                name: "APEX Grip & Accessories Pack",
+                category: "Accessories",
+                price: 2200,
+                image: "images/grip pack.png", // Add image path here
+                description: "Includes bat grips, cone, and shoe studs."
+            },
+            {
+                id: 12,
+                name: "APEX Keeping Gloves",
+                category: "Gloves",
+                price: 6200,
+                image: "images/keeping gloves.png", // Add image path here
+                description: "Rubber cup palm wicketkeeping gloves."
+            }
+        ];
+
+        /* =========================================
+           STATE & STORAGE
+        ========================================= */
+        let cart = JSON.parse(localStorage.getItem("apexCart")) || [];
+
+        function saveCart() {
+            localStorage.setItem("apexCart", JSON.stringify(cart));
+        }
+
+        function formatPrice(price) {
+            return "Rs. " + price.toLocaleString("en-PK");
+        }
+
+        /* =========================================
+           NOTIFICATION POPUP
+        ========================================= */
+        function showNotification(message) {
+            const old = document.querySelector("#notification");
+            if (old) old.remove();
+
+            const notification = document.createElement("div");
+            notification.id = "notification";
+            notification.textContent = "✓ " + message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => notification.classList.add("hide"), 1800);
+            setTimeout(() => notification.remove(), 2300);
+        }
+
+        /* =========================================
+           CART COUNT & UI BADGE
+        ========================================= */
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            const cartBadge = document.querySelector("#cart-count");
+            if (cartBadge) cartBadge.textContent = count;
+        }
+
+        /* =========================================
+           PRODUCTS DISPLAY & FILTERING
+        ========================================= */
+        function displayProducts(list = products) {
+            const grid = document.querySelector("#products-grid");
+            const noProducts = document.querySelector("#no-products");
+            if (!grid) return;
+
+            grid.innerHTML = "";
+
+            if (list.length === 0) {
+                if (noProducts) noProducts.style.display = "block";
+                return;
+            }
+
+            if (noProducts) noProducts.style.display = "none";
+
+            list.forEach(product => {
+                const card = document.createElement("div");
+                card.className = "product-card";
+
+                card.innerHTML = `
+                    <div class="product-image">
+                        <span class="product-category">${product.category}</span>
+                        <img 
+                            src="${product.image}" 
+                            alt="${product.name}" 
+                            onerror="this.src='https://via.placeholder.com/300x220?text=${encodeURIComponent(product.name)}'"
+                        >
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <div class="product-bottom">
+                            <span class="product-price">${formatPrice(product.price)}</span>
+                            <button class="add-cart" onclick="addToCart(${product.id})">ADD TO CART</button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterProducts() {
+            const search = document.querySelector("#search-input")?.value.toLowerCase().trim() || "";
+            const category = document.querySelector("#category-filter")?.value || "all";
+
+            const filtered = products.filter(product => {
+                const matchesSearch = product.name.toLowerCase().includes(search) || 
+                                      product.description.toLowerCase().includes(search);
+                const matchesCategory = category === "all" || product.category === category;
+                return matchesSearch && matchesCategory;
+            });
+
+            displayProducts(filtered);
+        }
+
+        /* =========================================
+           CART FUNCTIONS
+        ========================================= */
+        function addToCart(id) {
+            const product = products.find(item => item.id === id);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            saveCart();
+            updateCartCount();
+            displayCart();
+            showNotification(product.name + " added to cart!");
+        }
+
+        function displayCart() {
+            const container = document.querySelector("#cart-items");
+            const empty = document.querySelector("#empty-cart");
+            if (!container) return;
+
+            container.innerHTML = "";
+
+            if (cart.length === 0) {
+                if (empty) empty.style.display = "block";
+                document.querySelector("#summary-items").textContent = "0";
+                document.querySelector("#cart-subtotal").textContent = "Rs. 0";
+                document.querySelector("#cart-total").textContent = "Rs. 0";
+                return;
+            }
+
+            if (empty) empty.style.display = "none";
+
+            let subtotal = 0;
+            let totalItems = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                totalItems += item.quantity;
+
+                const cartItem = document.createElement("div");
+                cartItem.className = "cart-item";
+
+                cartItem.innerHTML = `
+                    <div class="cart-image">
+                        <img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/80?text=Item'">
+                    </div>
+                    <div class="cart-info">
+                        <h3>${item.name}</h3>
+                        <p>${formatPrice(item.price)}</p>
+                        <div class="quantity-controls">
+                            <button onclick="changeQuantity(${item.id}, -1)">−</button>
+                            <span>${item.quantity}</span>
+                            <button onclick="changeQuantity(${item.id}, 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="cart-right">
+                        <strong class="cart-item-total">${formatPrice(itemTotal)}</strong>
+                        <button class="remove-btn" onclick="removeFromCart(${item.id})">REMOVE</button>
+                    </div>
+                `;
+                container.appendChild(cartItem);
+            });
+
+            document.querySelector("#summary-items").textContent = totalItems;
+            document.querySelector("#cart-subtotal").textContent = formatPrice(subtotal);
+            document.querySelector("#cart-total").textContent = formatPrice(subtotal);
+        }
+
+        function changeQuantity(id, amount) {
+            const item = cart.find(item => item.id === id);
+            if (!item) return;
+
+            item.quantity += amount;
+            if (item.quantity <= 0) {
+                cart = cart.filter(item => item.id !== id);
+            }
+
+            saveCart();
+            updateCartCount();
+            displayCart();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            saveCart();
+            updateCartCount();
+            displayCart();
+            showNotification("Item removed from cart.");
+        }
+
+        function clearCart() {
+            if (cart.length === 0) {
+                alert("Your cart is already empty.");
+                return;
+            }
+            if (!confirm("Are you sure you want to clear your cart?")) return;
+
+            cart = [];
+            saveCart();
+            updateCartCount();
+            displayCart();
+            showNotification("Cart cleared successfully.");
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+            alert("Thank you for shopping with Apex Cricket! Your order is ready for checkout.");
+            cart = [];
+            saveCart();
+            updateCartCount();
+            displayCart();
+        }
+
+        /* =========================================
+           EVENT LISTENERS & INITIALIZATION
+        ========================================= */
+        document.addEventListener("DOMContentLoaded", () => {
+            // Search & Filter Listeners
+            document.querySelector("#search-input")?.addEventListener("input", filterProducts);
+            document.querySelector("#category-filter")?.addEventListener("change", filterProducts);
+
+            // Cart Actions
+            document.querySelector("#clear-cart-btn")?.addEventListener("click", clearCart);
+            document.querySelector("#checkout-btn")?.addEventListener("click", checkout);
+
+            // Contact Form Listener
+            document.querySelector("#contact-form")?.addEventListener("submit", function(e) {
+                e.preventDefault();
+                const name = document.querySelector("#name").value.trim();
+                const email = document.querySelector("#email").value.trim();
+                const message = document.querySelector("#message").value.trim();
+                const formMsg = document.querySelector("#form-message");
+
+                if (!name || !email || !message) {
+                    formMsg.textContent = "Please fill in all required fields.";
+                    formMsg.style.color = "#e63946";
+                    return;
+                }
+
+                formMsg.textContent = "✓ Message submitted successfully!";
+                formMsg.style.color = "#2a9d8f";
+                this.reset();
+            });
+
+            // Mobile Navigation Toggle
+            document.querySelector("#menu-btn")?.addEventListener("click", () => {
+                document.querySelector("#nav-links")?.classList.toggle("show");
+            });
+
+            // Close Mobile Nav on Click
+            document.querySelectorAll("#nav-links a").forEach(link => {
+                link.addEventListener("click", () => {
+                    document.querySelector("#nav-links")?.classList.remove("show");
+                });
+            });
+
+            // Initial UI Render
+            displayProducts();
+            updateCartCount();
+            displayCart();
+        });
+    </script>
+</body>
+</html>
